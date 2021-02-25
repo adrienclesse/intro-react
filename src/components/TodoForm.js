@@ -1,4 +1,5 @@
-import React, {useState,} from 'react'
+import React, {useState,} from 'react';
+import Todo from './Todo';
 
 function TodoForm(props) {
     const [input, setInput] = useState(props.edit ? props.edit.value : '')
@@ -12,16 +13,23 @@ function TodoForm(props) {
 
         props.onSubmit({
         id: Math.floor(Math.random() * 10000),
-        text : input
+        text : input,
+        complete : false,
         });
+
+
     setInput('');
     };
+    // const leftTodo = [...todos].filter(todo => todo.complete = false)
+        
     return (
             <>
             <form className='todo-form' onSubmit={handleSubmit}>
                 
                 <input type="text" placeholder="Add a todo" value={input} name="text" className='todo-input' onChange={handleChange} ></input>
                 <button className="todo-button" type="submit">Add todo</button>
+                <br></br>
+                {/* <h3>Left to do : {todos.filter((todo) => !todo.complete).length} </h3> */}
 
             </form>
 
